@@ -1,0 +1,151 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Signika', sans-serif;
+}
+section{
+    min-height: 100vh;
+}
+section:nth-child(1){
+    background-color: #30336b;
+}
+section:nth-child(1) header{
+    background-color: #130f40;
+}
+section:nth-child(2){
+    background-color: #485460;
+}
+section:nth-child(2) header{
+    background-color: #1e272e;
+}
+section:nth-child(3){
+    background-color: #575fcf;
+}
+section:nth-child(3) header{
+    background-color: #3c40c6;
+}
+header{
+    height: 80px;
+    padding: 20px;
+    text-align: center;
+}
+header h1{
+    color: #fff;
+    font-size: 2em;
+}
+.h-80px{
+    height: calc(100vh - 80px);
+}
+.d-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.digital,.analog,.alarm{
+    width: 50%;
+}
+.d-clock{
+    width: 80%;
+    height: 200px;
+}
+.d-clock .c{
+    font-size: 3em;
+    padding: 10px;
+    color: #fff;
+    text-shadow: 3px 3px 0px black;
+}
+.d-clock .h{
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+}
+.d-clock .s{
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+.a-clock{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    transform: rotate(180deg);
+    margin-bottom: 20px;
+}
+.a-clock img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: rotate(180deg);
+}
+.a-clock .c{
+    width: 3px;
+    display: block;
+    position: absolute;
+    left: 148px;
+    top: 149px;
+    transform: rotate(0deg);
+    transform-origin: top;
+}
+.a-clock .h{
+    height: 60px;
+    background-color: #130f40;
+}
+.a-clock .m{
+    height: 80px;
+    background-color: #ff3f34;
+}
+.a-clock .s{
+    height: 100px;
+    background-color: #3c40c6;
+}
+.btn{
+    padding: 10px;
+    outline: none;
+    background-color: #fff;
+    text-transform: capitalize;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.3s;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.btn-black{
+    color: #1e272e;
+    border: 2px solid #1e272e;
+}
+.btn-black:hover{
+    color: #fff;
+    border: 2px solid #fff;
+    background-color: #1e272e;
+}
+input[type="time"]{
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.m-20{
+    margin: 20px;
+}
+#alarm-box .digital, #stopwatch .digital{
+    flex-direction: column;
+}
+#alarm-box .digital h2{
+    color: #fff;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+.d-none{
+    display: none;
+}
+@media (max-width: 770px){
+    #clock-box .h-80px{
+        height: auto;
+    }
+    .h-80px{flex-direction: column;}
+    .digital,.analog,.alarm{
+        width: 100%;
+    }
+}

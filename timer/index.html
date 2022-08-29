@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock, alarm, stopwatch, countdown timer with js</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
+    <!-- my css -->
+    <link rel="stylesheet" href="timer.css">
+</head>
+<body>
+    <section id="clock-box">
+        <header><h1>clock</h1></header>
+        <div class="d-flex h-80px">
+            <div class="digital d-flex">
+                <div class="d-clock d-flex">
+                    <div id="dh" class="c h">00</div>
+                    <div id="dm" class="c m">00</div>
+                    <div id="ds" class="c s">00</div>
+                </div>
+            </div>
+            <div class="analog d-flex">
+                <div class="a-clock">
+                    <img src="clock.png" alt="clock">
+                    <span id="ah" class="c h"></span>
+                    <span id="am" class="c m"></span>
+                    <span id="as" class="c s"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="alarm-box">
+        <header><h1>alarm & countdown</h1></header>
+        <div class="d-flex h-80px">
+            <div class="alarm d-flex">
+                <input type="time" id="alarm">
+                <button id="set_alarm" type="button" class="m-20 btn btn-black">set</button>
+                <button id="reset_alarm" type="button" class="m-20 btn btn-black d-none">reset</button>
+            </div>
+            <div id="alrm-left" class="digital d-flex d-none">
+                <h2>alarm play in</h2>
+                <div class="d-clock d-flex">
+                    <div id="alh" class="c h">00</div>
+                    <div id="alm" class="c m">00</div>
+                    <div id="als" class="c s">00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="stopwatch">
+        <header><h1>stopwatch</h1></header>
+        <div class="d-flex h-80px">
+            <div class="digital d-flex">
+                <div class="d-clock d-flex">
+                    <div id="swm" class="c h">00</div>
+                    <div id="sws" class="c m">00</div>
+                    <div id="swms" class="c s">00</div>
+                </div>
+                <button id="start_stopwatch" type="button" class="btn btn-black">start</button>
+                <div class="d-flex d-none">
+                    <button id="stop_watch" type="button" class="btn btn-black m-20">stop</button>
+                    <button id="reset_watch" type="button" class="btn btn-black m-20">reset</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="timer.js"></script>
+</body>
+</html>
