@@ -1,0 +1,99 @@
+section{
+    width: 80%;
+    margin: 0px auto;
+}
+.part1,.part2{
+    width: 80%;
+    margin: 20px auto;
+}
+.header{
+    padding: 10px;
+    text-transform: capitalize;
+    font-size: 30px;
+    color: blue;
+}
+.box1{
+
+}
+.box2{
+
+}
+form{
+    border: 2px solid black;
+    padding: 20px 10px;
+    margin: 20px auto;
+    border-radius: 3px;
+}
+label{
+    text-transform: capitalize;
+    font-size: 20px;
+    display: block;
+    padding-bottom: 5px;
+}
+.input{
+    display: block;
+    margin: 20px 0px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.container{
+    align-items: flex-start;
+}
+.card-box{
+    flex-wrap: wrap;
+}
+.card{
+    padding: 20px;
+    border: 2px dashed black;
+    margin: 20px;
+    text-transform: capitalize;
+    text-align: center;
+    flex-grow: 1;
+}
+.card h2:first-child{
+    padding-bottom: 15px;
+}
+.card i{
+    font-size: 50px;
+}
+.card h2:last-child{
+    padding-top: 15px;
+}
+table{
+    margin: 0px auto;
+    border: 2px solid black;
+    text-transform: capitalize;
+    padding: 10px;
+    text-align: center;
+}
+table .btn{
+    font-size: 15px;
+}
+td,th{
+    padding: 10px;
+}
+.green{
+    color: green;
+}
+.red{
+    color: red;
+}
+#modify{padding: 10px;}
+@media (max-width: 770px){
+    .container{
+        flex-direction: column;
+    }
+    .part1,.part2{
+        width: 90%;
+    }
+    .input{
+        width: 100%;
+    }
+    table .btn:first-child{
+        margin-bottom: 5px;
+    }
+}

@@ -4,10 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>budget app with localstorage</title>
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="budget.css">
 </head>
 <body>
-    <!-- https://romeojeremiah.github.io/javascript-oop-budget-project/ -->
-    <h1>its take time to develop</h1>
+    <section>
+        <h1 class="header">budget app with localstorage</h1>
+        <h2 id="modify"></h2>
+        <div class="d-flex container">
+            <div class="part1">
+                <div class="box1">
+                    <form id="enter_budget">
+                        <label>enter your budget</label>
+                        <input id="budget_amt" class="input" type="number">
+                        <button class="btn btn-black" type="submit">calculate</button>
+                    </form>
+                </div>
+                <div class="box2">
+                    <form id="enter_exp" data-task="addExpense" data-old="0">
+                        <label>expense name</label>
+                        <input id="exp_name" class="input" type="text">
+                        <label>expense amount</label>
+                        <input id="exp_amt" class="input" type="number">
+                        <button class="btn btn-black" type="submit">add expense</button>
+                    </form>
+                </div>
+            </div>
+            <div class="part2">
+                <div class="card-box d-flex">
+                    <div class="card">
+                        <h2>budget</h2>
+                        <i class="fa-solid fa-money-bill-1-wave"></i>
+                        <h2 id="bud" class="green">$ 0</h2>
+                    </div>
+                    <div class="card">
+                        <h2>expenses</h2>
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                        <h2 id="exp" class="red">$ 0</h2>
+                    </div>
+                    <div class="card">
+                        <h2>balance</h2>
+                        <i class="fa-solid fa-sack-dollar"></i>
+                        <h2 id="balance">$ 0</h2>
+                    </div>
+                </div>
+                <table class="d-none" id="table">
+                    <thead>
+                        <tr>
+                            <th>expense title</th>
+                            <th>expense value</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <script src="budget.js"></script>
 </body>
 </html>

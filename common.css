@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika&display=swap');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css");
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Signika', sans-serif;
+}
+.d-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.m-20{
+    margin: 20px;
+}
+.d-none{
+    display: none;
+}
+.btn{
+    padding: 10px;
+    outline: none;
+    background-color: #fff;
+    text-transform: capitalize;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.3s;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.btn-black{
+    color: #1e272e;
+    border: 2px solid #1e272e;
+}
+.btn-black:hover{
+    color: #fff;
+    border: 2px solid #fff;
+    background-color: #1e272e;
+}
+.btn-green{
+    color: green;
+    border: 2px solid green;
+}
+.btn-green:hover{
+    color: #fff;
+    border: 2px solid #fff;
+    background-color: green;
+}
+.btn-red{
+    color: red;
+    border: 2px solid red;
+}
+.btn-red:hover{
+    color: #fff;
+    border: 2px solid #fff;
+    background-color: red;
+}
