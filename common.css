@@ -11,6 +11,9 @@
     justify-content: center;
     align-items: center;
 }
+.min-vh-100{
+    min-height: 100vh;
+}
 .m-20{
     margin: 20px;
 }

@@ -5,8 +5,136 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pure js calculator</title>
+    <link rel="stylesheet" href="../common.css">
+    <style>
+        table{
+            border-spacing: 15px;
+            box-shadow: 0px 0px 4px darkgrey;
+            border-radius: 3px;
+            user-select: none;
+        }
+        td,th{
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+            box-shadow: 0px 0px 4px darkgrey;
+            border-radius: 3px;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 30px;
+            transition: all ease 0.1s;
+        }
+        td:hover{
+            background-color: black;
+            color: #fff;
+        }
+        table thead th{
+            cursor: default;
+            text-align: end;
+            font-size: 30px;
+        }
+        td[rowspan]{
+            background-color: darkorange;
+            color: #fff;
+        }
+        td[rowspan]:hover{
+            background-color: blue;
+        }
+        tbody tr:first-child td{
+            background-color: blue;
+            color: #fff;
+        }
+        tbody tr:first-child td:hover{
+            background-color: darkorange;
+        }
+    </style>
 </head>
-<body>
-    <h1>its take time to develop</h1>
+<body class="d-flex min-vh-100">
+    <table>
+        <thead>
+            <tr>
+                <th id="view" colspan="4"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-id="+"><i class="fa-solid fa-plus"></i></td>
+                <td data-id="-"><i class="fa-solid fa-minus"></i></td>
+                <td data-id="*"><i class="fa-solid fa-xmark"></i></td>
+                <td data-id="/"><i class="fa-solid fa-divide"></i></td>
+            </tr>
+            <tr>
+                <td data-id="7">7</td>
+                <td data-id="8">8</td>
+                <td data-id="9">9</td>
+                <td data-id="=" rowspan="4"><i class="fa-solid fa-equals"></i></td>
+            </tr>
+            <tr>
+                <td data-id="4">4</td>
+                <td data-id="5">5</td>
+                <td data-id="6">6</td>
+            </tr>
+            <tr>
+                <td data-id="1">1</td>
+                <td data-id="2">2</td>
+                <td data-id="3">3</td>
+            </tr>
+            <tr>
+                <td data-id="0">0</td>
+                <td data-id=".">.</td>
+                <td data-id="c">C</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        let view = document.getElementById("view");
+        let obj = {
+            equal_clicked: false
+        }
+        let process = (id) => {
+            if(id == "0"){view.innerText = view.innerText + 0}
+            if(view.innerText.startsWith("00")){view.innerText = 0}
+            if(id > 0 && id <= 9){
+                if(obj.equal_clicked){view.innerText = 0; obj.equal_clicked = false}
+                if(view.innerText.startsWith("0")){view.innerText = ""}
+                view.innerText = view.innerText + id;
+            }
+            if(id == "."){
+                if(!view.innerText.includes(".")){view.innerText = view.innerText + "."}
+            }
+            if(id === "c"){
+                view.innerText = 0;
+            }
+            if(id == "+" || id == "-" || id == "*" || id == "/"){
+                obj.equal_clicked = false;
+                let last_char = view.innerText.slice(view.innerText.length - 1);
+                if("+,-,*,/".includes(last_char)){
+                    view.innerText = view.innerText.slice(0,view.innerText.length - 1);
+                }
+                view.innerText = view.innerText + id;
+            }
+            if(id === "=" && view.innerText != ""){
+                last_char = view.innerText.slice(view.innerText.length - 1);
+                if("+,-,*,/".includes(last_char)){
+                    view.innerText = view.innerText.slice(0,view.innerText.length - 1);
+                }
+                obj.equal_clicked = true;
+                view.innerText = eval(view.innerText);
+            }
+        }
+        let all = document.querySelectorAll("tbody td");
+        all.forEach((elem) => {
+            elem.addEventListener("click",() => {
+                process(elem.dataset.id);
+            })
+        });
+        let support = ["1","2","3","4","5","6","7","8","9","0",".","+","-","*","/","="];
+        document.body.addEventListener("keyup",(e) => {
+            if(support.includes(e.key)){
+                process(e.key);
+            }
+        })
+    </script>
 </body>
 </html>
