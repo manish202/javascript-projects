@@ -89,37 +89,49 @@
     </table>
     <script>
         let view = document.getElementById("view");
-        let obj = {
-            equal_clicked: false
-        }
         let process = (id) => {
             if(id == "0"){view.innerText = view.innerText + 0}
             if(view.innerText.startsWith("00")){view.innerText = 0}
             if(id > 0 && id <= 9){
-                if(obj.equal_clicked){view.innerText = 0; obj.equal_clicked = false}
-                if(view.innerText.startsWith("0")){view.innerText = ""}
+                if(view.innerText == "0"){view.innerText = ""}
                 view.innerText = view.innerText + id;
-            }
-            if(id == "."){
-                if(!view.innerText.includes(".")){view.innerText = view.innerText + "."}
             }
             if(id === "c"){
                 view.innerText = 0;
             }
             if(id == "+" || id == "-" || id == "*" || id == "/"){
-                obj.equal_clicked = false;
                 let last_char = view.innerText.slice(view.innerText.length - 1);
-                if("+,-,*,/".includes(last_char)){
-                    view.innerText = view.innerText.slice(0,view.innerText.length - 1);
+                if(view.innerText != "" && last_char != "."){
+                    let is_exists = view.innerText.search(/[+,\-,*,/]/);
+                    if(is_exists !== -1){
+                        if("+,-,*,/".includes(last_char)){
+                            view.innerText = view.innerText.slice(0,view.innerText.length - 1);
+                            view.innerText = view.innerText + id;
+                        }else{
+                            view.innerText = eval(view.innerText);
+                            view.innerText = view.innerText + id;
+                        }
+                    }else{
+                        view.innerText = view.innerText + id;
+                    }
                 }
-                view.innerText = view.innerText + id;
             }
-            if(id === "=" && view.innerText != ""){
+            if(id == "."){
+                last_char = view.innerText.slice(view.innerText.length - 1);
+                if(view.innerText != "" && !"+,-,*,/,.".includes(last_char)){
+                    let sym_ind = view.innerText.search(/[+,\-,*,/]/);
+                    if(sym_ind == -1){
+                        if(!view.innerText.includes(".")){view.innerText = view.innerText + "."}
+                    }else{
+                        if(!view.innerText.slice(sym_ind).includes(".")){view.innerText = view.innerText + "."}
+                    }
+                }
+            }
+            if(id == "=" && view.innerText != ""){
                 last_char = view.innerText.slice(view.innerText.length - 1);
                 if("+,-,*,/".includes(last_char)){
                     view.innerText = view.innerText.slice(0,view.innerText.length - 1);
                 }
-                obj.equal_clicked = true;
                 view.innerText = eval(view.innerText);
             }
         }

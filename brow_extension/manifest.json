@@ -1,0 +1,19 @@
+{ 
+    "manifest_version": 2,
+    "name": "FirstExtension",
+    "description": "Hey! This Is My First Browser Extension.",
+    "version": "1",
+    "author": "Manish Prajapati",
+    "browser_action": {
+        "default_icon": {
+            "32":"favicon-32x32.png",
+            "16":"favicon-16x16.png"
+        },
+        "default_title": "Have a good day",
+        "default_popup": "popup.html"
+    },
+    "chrome_url_overrides" : {
+        "newtab": "index.html"
+    },
+    "permissions": ["activeTab"]
+}
