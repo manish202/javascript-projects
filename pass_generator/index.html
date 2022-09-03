@@ -206,7 +206,7 @@
         let output = document.getElementById("output");
         let copy_elem = document.getElementById("copy");
         let range = document.getElementById("range");
-        let len = document.getElementById("len");
+        let range_val = document.getElementById("len");
         let ch_bx = document.querySelectorAll(".ch-bx");
         let spans = document.querySelectorAll("#indicator span");
         let indicator_msg = document.querySelector("#indicator b");
@@ -270,6 +270,7 @@
                 }
                 if(str.length >= len){output.value = str.substr(0,len);break;}
             }
+            range_val.innerText = range.value;
             setIndicator();
         }
         //when page load first time
