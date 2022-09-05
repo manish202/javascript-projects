@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pure js random color generator</title>
+    <link rel="stylesheet" href="../common.css">
+    <style>
+        button{
+            margin: 20px auto;
+            display: block;
+        }
+        .container{
+            margin: 0px 10px;
+            flex-wrap: wrap;
+        }
+        .container span{
+            line-height: 100px;
+            text-align: center;
+            width: 18%;
+            height: 100px;
+            display: inline-block;
+            font-size: 20px;
+            margin: 2px;
+            cursor: pointer;
+        }
+        @media (max-width:770px){
+            .container span{
+                height: 70px;
+                width: 100px;
+                line-height: 70px;
+            }
+        }
+        .popup{
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: none;
+            line-height: 100vh;
+            text-align: center;
+            font-size: 2em;
+            text-transform: capitalize;
+            color: #fff;
+        }
+        .popup.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn btn-black">refresh</button>
+    <div class="container d-flex"></div>
+    <div class="d-flex popup"></div>
+    <script>
+        let btn = document.querySelector(".btn");
+        let container = document.querySelector(".container");
+        let popup = document.querySelector(".popup");
+        let complements = ["nice","good","copied","awesome","beautiful","right one","got it!","will do!"];
+        let genColor = () => {
+            let arr = "0123456789abcdef".split("");
+            let str = "";
+            for(let i=0;i<6;i++){
+                str += arr[Math.floor(Math.random() * arr.length)];
+            }
+            return "#"+str;
+        }
+        let refresh = () => {
+            container.innerHTML = "";
+            for(let i=0;i<100;i++){
+                let elem = document.createElement("span");
+                let clr = genColor();
+                elem.style.backgroundColor = clr;
+                elem.innerText = clr;
+                container.appendChild(elem);
+            }
+            let all_span = document.querySelectorAll("span");
+            all_span.forEach(elem => {
+                elem.onclick = () => {
+                    popup.classList.add("active");
+                    popup.style.backgroundColor = elem.innerText;
+                    popup.innerText = complements[Math.floor(Math.random()*complements.length)];
+                    setTimeout(() => {
+                        popup.classList.remove("active");
+                    },1000);
+                    navigator.clipboard.writeText(elem.innerText);
+                }
+            })
+        }
+        refresh();
+        btn.onclick = refresh;
+    </script>
+</body>
+</html>
