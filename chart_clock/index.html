@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>live clock in chart style with pure js</title>
+    <link rel="stylesheet" href="../common.css">
+    <style>
+        :root{
+            --bxw: 50vw;
+            --bxh: 70vh;
+            --bewidth: calc(var(--bxw)/12);
+            --main-color: #fff;
+        }
+        body{
+            background-color: #8A06D1;
+        }
+        .box{
+            width: var(--bxw);
+            height: var(--bxh);
+            border-left: 3px solid var(--main-color);
+            border-bottom: 3px solid var(--main-color);
+            position: relative;
+            color: var(--main-color);
+        }
+        .box::before,.box::after{
+            position: absolute;
+            left: calc(-1 * var(--bewidth));
+            bottom: -3px;
+            content: "";
+            width: var(--bewidth);
+            height: 3px;
+            background-color: var(--main-color);
+        }
+        .box::after{
+            width: 3px;
+            height: var(--bewidth);
+            left: -3px;
+            bottom: calc(var(--bewidth) * -1);
+        }
+        .num{
+            flex-direction: column-reverse;
+            position: absolute;
+            left: calc(var(--bewidth) * -1);
+            bottom: 0;
+        }
+        .num b{
+            text-align: center;
+            width: var(--bewidth);
+            height: calc(var(--bxh)/12);
+            line-height: 0;
+        }
+        .hms,.indicator{
+            position: absolute;
+            bottom: calc(-1 * var(--bewidth));
+            width: var(--bxw);
+            justify-content: space-evenly;
+        }
+        .hms span,.indicator span{
+            width: var(--bewidth);
+            height: var(--bewidth);
+            text-align: center;
+            line-height: var(--bewidth);
+        }
+        .indicator{
+            bottom: 0;
+            align-items: flex-end;
+        }
+        .indicator span{
+            height: 100px;
+        }
+        .indicator span:nth-child(1){
+            background-color: #FFC312;
+        }
+        .indicator span:nth-child(2){
+            background-color: #ecd7e3;
+        }
+        .indicator span:nth-child(3){
+            background-color: #C4E538;
+        }
+        @media (max-width:770px){ :root{--bxw: 80vw;} .num b{text-align: left;font-size: 14px;}}
+    </style>
+</head>
+<body class="d-flex min-vh-100">
+    <div class="box">
+        <div class="d-flex num">
+            <b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b>
+            <b>7</b><b>8</b><b>9</b><b>10</b><b>11</b><b>12</b>
+        </div>
+        <div class="d-flex hms">
+            <span>H</span>
+            <span>M</span>
+            <span>S</span>
+        </div>
+        <div class="d-flex indicator"><span></span><span></span><span></span></div>
+    </div>
+    <script>
+        let box = document.querySelector(".box");
+        let indicator = document.querySelectorAll(".indicator span");
+        setInterval(() => {
+            let now = new Date();
+            let h = now.getHours();
+            let m = now.getMinutes();
+            let s = now.getSeconds();
+            if(h > 12){h = h - 12}
+            indicator[0].style.height = `calc((var(--bxh) * ${h}/12) + (${m}*var(--bxh)/12)/60)`;
+            indicator[1].style.height = `calc(var(--bxh) * ${m}/60)`;
+            indicator[2].style.height = `calc(var(--bxh) * ${s}/60)`;
+        }, 1000);
+    </script>
+</body>
+</html>
